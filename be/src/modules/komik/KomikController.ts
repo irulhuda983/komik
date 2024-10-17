@@ -18,7 +18,9 @@ const latest = async (req: Request, res: Response): Promise<any> => {
 
 const listKomik = async (req: Request, res: Response): Promise<any> => {
     try {
-        const data = await KomikService.listKomik();
+        const page = req.query.page ? Number(req.query.page) : 1;
+        const data = await KomikService.komikTebaru(page);
+        // const data = await KomikService.listKomik();
 
         return res.status(200).json({
             message: "success",

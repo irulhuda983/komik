@@ -247,6 +247,79 @@ const daftarKomik = async (): Promise<any> => {
     return obj;
 };
 
+const komikTebaru = async (page: number) => {
+    const obj = [];
+    const { data } = await axios.get(
+        "https://api.komiku.id/manga/page/" + page,
+    );
+
+    // Memuat HTML ke cheerio untuk memudahkan parsing
+    const $ = cheerio.load(data);
+
+    $(".bge").each((no, el) => {
+        const linkKomik = $(el).find(".bgei").find("a").attr("href");
+        const chUp = $(el).find(".bgei").find(".up").text();
+        const title = $(el).find(".kan").find("a").find("h3").text();
+        const desc = $(el).find(".kan").find("p").text();
+        const slug = linkKomik.split("/");
+        const subTitle = $(el).find(".kan").find(".judul2").text();
+        let strType = $(el).find(".bgei").find(".tpe1_inf").text();
+        strType = strType.replaceAll("\n", "").trim();
+        const splitType = strType.split(" ");
+
+        const type = splitType[0];
+
+        splitType.shift();
+
+        const subSplit = subTitle.split("•");
+
+        let listCH = [];
+
+        $(el)
+            .find(".kan")
+            .find(".new1")
+            .each((n, ch) => {
+                const chNo = $(ch).find("a").text();
+                const chLink = $(ch).find("a").attr("href");
+
+                listCH.push({
+                    chNo: parseInt(chNo.split(" Chapter ")[1]),
+                    chLink: chLink.replaceAll("/", ""),
+                });
+            });
+
+        const linkImage = $(el).find(".bgei").find("a").find("img").attr("src");
+
+        obj.push({
+            title: title.trim(),
+            slug: slug[4],
+            desc: desc.trim(),
+            url: linkKomik,
+            imageUrl: linkImage ? linkImage.split("?")[0] : null,
+            reader: subSplit[0].trim().replaceAll(" pembaca", ""),
+            firstCh: listCH[0].chNo,
+            firstChLink: listCH[0].chLink,
+            lastCh: listCH[1].chNo,
+            lastChLink: listCH[1].chLink,
+            type: type,
+            genre: splitType,
+            chUp: chUp,
+            lastUpdate: subSplit[1].trim(),
+        });
+
+        logger.info(`listen data komik : ${title.trim()}`);
+    });
+
+    const next = $("span[hx-get]").attr("hx-get");
+
+    return {
+        currentPage: page,
+        prevPage: page == 1 ? null : page - 1,
+        nextPage: next ? next.split("/")[5] : null,
+        komik: obj,
+    };
+};
+
 const pustakaKomik = async () => {
     const obj = [];
     // https://komiku.id/pustaka/
@@ -520,6 +593,7 @@ export {
     listKomik,
     daftarKomik,
     pustakaKomik,
+    komikTebaru,
     syncKomik,
     findKomik,
     detailKomik,
