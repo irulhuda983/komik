@@ -34,6 +34,19 @@ const fetchData = async (pages) => {
     }
 };
 
+const changeMetaDesc = () => {
+    document.title = "Dartar Komik Terbaru";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute("content", `Baca Komik terbaru Terbaru di Bacakomikindo.`);
+    } else {
+        const newMetaDescription = document.createElement("meta");
+        newMetaDescription.name = "description";
+        newMetaDescription.content = `Baca Komik terbaru Terbaru di Bacakomikindo.`;
+        document.head.appendChild(newMetaDescription);
+    }
+};
+
 const changePage = async (pages) => {
     if (!pages) {
         return;
@@ -51,6 +64,7 @@ const viewChar = (str, maxLength) => {
 
 onMounted(() => {
     fetchData(page.value);
+    changeMetaDesc();
 });
 </script>
 
