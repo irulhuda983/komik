@@ -1,0 +1,70 @@
+ [LOGGER] 2024-10-11 07:34:27.761 AM error : uncaughtException: ⨯ Unable to compile TypeScript:
+src/modules/komik/KomikService.ts(112,17): error TS18004: No value exists in scope for the shorthand property 'firstCh'. Either declare one or provide an initializer.
+
+Error: ⨯ Unable to compile TypeScript:
+src/modules/komik/KomikService.ts(112,17): error TS18004: No value exists in scope for the shorthand property 'firstCh'. Either declare one or provide an initializer.
+
+    at Object.<anonymous> (E:\PROJECT\komik\be\src\modules\komik\KomikService.ts:1:7)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (E:\PROJECT\komik\be\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-5248813258986451.js:69:33)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at require.extensions..jsx.require.extensions..js (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-5248813258986451.js:114:20)
+    at require.extensions.<computed> (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-5248813258986451.js:71:20)
+    at Object.nodeDevHook [as .ts] (E:\PROJECT\komik\be\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:960:12)
+ [LOGGER] 2024-10-11 09:31:20.247 AM error : uncaughtException: ⨯ Unable to compile TypeScript:
+src/modules/komik/KomikService.ts(89,13): error TS2322: Type 'string[]' is not assignable to type 'string'.
+
+Error: ⨯ Unable to compile TypeScript:
+src/modules/komik/KomikService.ts(89,13): error TS2322: Type 'string[]' is not assignable to type 'string'.
+
+    at Object.<anonymous> (E:\PROJECT\komik\be\src\modules\komik\KomikService.ts:1:7)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (E:\PROJECT\komik\be\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:69:33)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at require.extensions..jsx.require.extensions..js (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:114:20)
+    at require.extensions.<computed> (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:71:20)
+    at Object.nodeDevHook [as .ts] (E:\PROJECT\komik\be\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:960:12)
+ [LOGGER] 2024-10-11 11:06:29.511 AM error : uncaughtException: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+Error: @prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.
+    at new PrismaClient (E:\PROJECT\komik\be\node_modules\.prisma\client\default.js:43:11)
+    at Object.<anonymous> (E:\PROJECT\komik\be\src\config\prisma.ts:3:12)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (E:\PROJECT\komik\be\node_modules\source-map-support\source-map-support.js:568:25)
+    at Module.m._compile (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:69:33)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at require.extensions..jsx.require.extensions..js (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:114:20)
+    at require.extensions.<computed> (C:\Users\irulh\AppData\Local\Temp\ts-node-dev-hook-20523612823956183.js:71:20)
+    at Object.nodeDevHook [as .ts] (E:\PROJECT\komik\be\node_modules\ts-node-dev\lib\hook.js:63:13)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+ [LOGGER] 2024-10-11 11:07:55.788 AM error : 
+Invalid `db.komik.createMany()` invocation in
+E:\PROJECT\komik\be\src\modules\komik\KomikService.ts:147:35
+
+  144 const syncKomik = async () => {
+  145     const listKomik = await pustakaKomik();
+  146 
+→ 147     const komiks = await db.komik.createMany(
+The table `komik` does not exist in the current database.
+ [LOGGER] 2024-10-11 11:10:12.264 AM error : 
+Invalid `db.komik.createMany()` invocation in
+E:\PROJECT\komik\be\src\modules\komik\KomikService.ts:147:35
+
+  144 const syncKomik = async () => {
+  145     const listKomik = await pustakaKomik();
+  146 
+→ 147     const komiks = await db.komik.createMany(
+The table `komik` does not exist in the current database.
+ [LOGGER] 2024-10-11 11:23:03.546 AM error : 
+Invalid `prisma.$executeRaw()` invocation:
+
+
+Raw query failed. Code: `1064`. Message: `You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"komik" RESTART IDENTITY CASCADE' at line 1`
+ [LOGGER] 2024-10-11 11:25:46.559 AM error : read ECONNRESET
+ [LOGGER] 2024-10-11 11:32:06.197 AM error : read ECONNRESET
+ [LOGGER] 2024-10-11 11:37:47.699 AM error : read ECONNRESET

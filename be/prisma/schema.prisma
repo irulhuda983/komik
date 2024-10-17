@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id              Int               @id @default(autoincrement())
+  name            String
+  username        String            @unique
+  email           String?           @unique
+  password        String
+  role            String
+  isActive        Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  userAccessToken UserAccessToken[] @relation("UsersToUserAccesToken")
+
+  @@map("users")
+}
+
+model UserAccessToken {
+  id               Int               @id @default(autoincrement())
+  userId           Int
+  token            String            @db.LongText
+  isRevoked        Boolean           @default(false)
+  expiredAt        DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  user             Users             @relation("UsersToUserAccesToken", fields: [userId], references: [id], onDelete: Cascade)
+  userRefreshToken UserRefreshToken? @relation("UserAccesTokenToUserRefreshToken")
+
+  @@map("user_access_token")
+}
+
+model UserRefreshToken {
+  id               Int             @id @default(autoincrement())
+  userAccesTokenId Int             @unique
+  refreshToken     String          @db.LongText
+  isRevoked        Boolean         @default(false)
+  expiredAt        DateTime?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  userAccessToken  UserAccessToken @relation("UserAccesTokenToUserRefreshToken", fields: [userAccesTokenId], references: [id], onDelete: Cascade)
+
+  @@map("user_refresh_token")
+}
+
+model Komik {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String
+  desc        String?
+  url         String
+  imageUrl    String?
+  reader      String?
+  firstCh     Int?
+  firstChLink String?
+  lastCh      Int?
+  lastChLink  String?
+  type        String?
+  genre       Json?
+  chUp        String?
+  lastUpdate  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("komik")
+}
