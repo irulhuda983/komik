@@ -2,6 +2,8 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import api from "@/composables/api.js";
+import { terbaru } from "@/composables/komik.js";
+
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import LogoImg from "@/assets/img/logo.png";

@@ -2,6 +2,8 @@
 import { ref, reactive, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import api from "@/composables/api.js";
+import { detailKomik } from "@/composables/komik.js";
+
 import { House, Plus, UserRoundCheck, Eye } from "lucide-vue-next";
 
 const router = useRouter();
