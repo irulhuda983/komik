@@ -23,6 +23,7 @@
         "lucide-vue-next": "^0.452.0",
         "pinia": "^2.2.4",
         "radix-vue": "^1.9.7",
+        "sitemap": "^8.0.0",
         "tailwind-merge": "^2.5.3",
         "tailwindcss-animate": "^1.0.7",
         "vite-plugin-static-copy": "^2.0.0",
@@ -35,6 +36,7 @@
         "@vitejs/plugin-vue": "^5.1.2",
         "autoprefixer": "^10.4.20",
         "tailwindcss": "^3.4.13",
-        "vite": "^5.4.1"
+        "vite": "^5.4.1",
+        "vite-plugin-sitemap": "^0.7.1"
     }
 }

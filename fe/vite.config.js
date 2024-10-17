@@ -2,9 +2,19 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import Sitemap from 'vite-plugin-sitemap'
 
 import tailwind from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
+
+const pages = [
+  '/',
+  '/komik',
+  '/komik/komik-one-piece-indo',
+  '/komik/41231-solo-leveling'
+]
+
+const dynamicRoutes = pages.map(name => `${name}`)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +45,10 @@ export default defineConfig({
               dest: '',           // Destination in the dist folder
             },
         ],
+    }),
+    Sitemap({
+      hostname: 'https://bacakomikindo.my.id',
+      dynamicRoutes
     }),
 ],
   resolve: {

@@ -18,6 +18,7 @@ const fetchData = async () => {
         const { data } = await api.get(`/komik/${route.params.slug}/detail`);
 
         detailData.value = data.data;
+        changeMetaDesc(data.data);
         isLoading.value = false;
     } catch (error) {
         console.log(error);
@@ -50,6 +51,19 @@ const getViews = (data) => {
     } else {
         // Jika angka lebih kecil dari 1 ribu
         return num.toString();
+    }
+};
+
+const changeMetaDesc = (data) => {
+    document.title = `${data.title}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute("content", `Baca ${data.title} Terbaru di Bacakomikindo.`);
+    } else {
+        const newMetaDescription = document.createElement("meta");
+        newMetaDescription.name = "description";
+        newMetaDescription.content = `Baca ${data.title} Terbaru di Bacakomikindo.`;
+        document.head.appendChild(newMetaDescription);
     }
 };
 
