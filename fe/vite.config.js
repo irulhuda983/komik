@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 import tailwind from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
@@ -25,7 +26,17 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    viteStaticCopy({
+        targets: [
+            {
+              src: 'robots.txt',  // Path to your robots.txt
+              dest: '',           // Destination in the dist folder
+            },
+        ],
+    }),
+],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
