@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bacakomikindo.my.id/sitemap.xml
+Sitemap: https://jams-store.com/sitemap.xml

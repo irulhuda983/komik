@@ -47,7 +47,7 @@ export default defineConfig({
         ],
     }),
     Sitemap({
-      hostname: 'https://bacakomikindo.my.id',
+      hostname: 'https://jams-store.com',
       dynamicRoutes
     }),
 ],
