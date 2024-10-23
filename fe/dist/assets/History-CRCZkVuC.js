@@ -1,0 +1,1 @@
+import{_ as r}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{V as e,f as o}from"./index-kdn-g2Ot.js";const t={};function c(n,s){return o(),e("div",null,"history")}const f=r(t,[["render",c]]);export{f as default};
